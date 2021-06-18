@@ -11,6 +11,8 @@ namespace RecursiveAlgorithms
         private readonly int[] _array;
         private int min;
         private int max;
+        private int position;
+        private int[] fibonacciSequence;
         public ArrayFunctions(int[] array)
         {
             _array = array;
@@ -96,6 +98,56 @@ namespace RecursiveAlgorithms
                     Console.Write($"{_array[i]}, ");
                 }
             }
+
+            Console.WriteLine();
+        }
+
+        public int IndexOfAnElemetInTheArray(int element)
+        {
+            return IndexOfAnElement(0, element);
+        }
+
+        private int IndexOfAnElement(int index, int element)
+        {
+
+            if(index>=0 && index < _array.Length)
+            {
+                if (_array[index] == element)
+                {
+                    position = index;
+                    return position;
+                }
+
+                IndexOfAnElement(index + 1, element);
+            }
+            //Console.WriteLine($"The element {element} is on position: {index}");
+            return position;
+        }
+
+        public long FibonacciSequence(int number)
+        {
+            return Fibonacci(number);
+        }
+
+        public long Fibonacci(int number)
+        {
+            if (number == 0)
+            {
+                return 0;
+            }
+            else if (number == 1)
+            {
+                return 1;
+            }
+            else
+            {
+                Console.Write(Fibonacci(number - 1) * Fibonacci(number - 2));
+
+                return Fibonacci(number - 1) * Fibonacci(number - 2);
+                Fibonacci(number - 1);
+            }
+
+            
         }
 
     }

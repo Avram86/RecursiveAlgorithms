@@ -14,7 +14,20 @@ namespace RecursiveAlgorithms
             Console.WriteLine($"The maximum number of the array is: {arr.MaxValueOfArray()}");
             Console.WriteLine();
 
+
             arr.AscendingSortingOfTheGivenArray();
+            Console.WriteLine();
+
+            Console.Write("Please enter a number:");
+            if(int.TryParse(Console.ReadLine(), out int number))
+            {
+               int position= arr.IndexOfAnElemetInTheArray(number);
+                Console.WriteLine($"The position of the element {number} is: {position}");
+
+                Console.WriteLine(arr.FibonacciSequence(number).ToString());
+            }
+           
+            
         }
             
     }
