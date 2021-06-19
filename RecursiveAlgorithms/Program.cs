@@ -18,25 +18,32 @@ namespace RecursiveAlgorithms
             arr.AscendingSortingOfTheGivenArray();
             Console.WriteLine();
 
-            Console.Write("Please enter a number:");
-            if(int.TryParse(Console.ReadLine(), out int number))
+            bool isCorrectFormat;
+            do
             {
-               int position= arr.IndexOfAnElemetInTheArray(number);
+                isCorrectFormat = true;
+                Console.Write("Please enter a number:");
+                if (int.TryParse(Console.ReadLine(), out int number))
+                {
+                    int position = arr.IndexOfAnElemetInTheArray(number);
 
-                Console.WriteLine();
-                Console.WriteLine($"The position of the element {number} is: {position}");
-                Console.WriteLine();
+                    Console.WriteLine();
+                    Console.WriteLine($"The position of the element {number} is: {position}");
+                    Console.WriteLine();
 
-                arr.FibonacciSequence(number);
-                Console.WriteLine();
+                    arr.FibonacciSequence(number);
+                    Console.WriteLine();
 
-                arr.Factorial(number);
-                Console.WriteLine();
-            }
-            else
-            {
-                Console.WriteLine("You did not insert a number!");
-            }            
+                    arr.Factorial(number);
+                    Console.WriteLine();
+                }
+                else
+                {
+                    isCorrectFormat = false;
+                    Console.WriteLine("You did not insert a number!");
+                }
+
+            }while(isCorrectFormat==false);
         }
     }
 }
