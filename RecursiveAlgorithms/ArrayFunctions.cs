@@ -12,7 +12,7 @@ namespace RecursiveAlgorithms
         private int min;
         private int max;
         private int position;
-        private int[] fibonacciSequence;
+
         public ArrayFunctions(int[] array)
         {
             _array = array;
@@ -85,17 +85,22 @@ namespace RecursiveAlgorithms
                 }
             } while (!isSorted);
 
+            PrintAnArray(_array);
+        }
+
+        public void PrintAnArray(int[] array)
+        {
             Console.Write("The array is: ");
 
-            for (int i = 0; i < _array.Length; i++)
+            for (int i = 0; i < array.Length; i++)
             {
-                if (i == _array.Length - 1)
+                if (i == array.Length - 1)
                 {
-                    Console.Write($"{_array[i]}");
+                    Console.Write($"{array[i]}");
                 }
                 else
                 {
-                    Console.Write($"{_array[i]}, ");
+                    Console.Write($"{array[i]}, ");
                 }
             }
 
@@ -120,17 +125,34 @@ namespace RecursiveAlgorithms
 
                 IndexOfAnElement(index + 1, element);
             }
-            //Console.WriteLine($"The element {element} is on position: {index}");
+            else
+            {
+                position = int.MinValue;
+                //throw new ArgumentNullException("The chosen value was not in the arary!");
+            }
+
             return position;
         }
 
-        public long FibonacciSequence(int number)
+        public void FibonacciSequence(int number)
         {
-            return Fibonacci(number);
+            Console.Write($"Fibonacci sequence of {number}:");
+
+            int[] result = new int[number+1];
+
+            for(int i = 0;i<=number;i++)
+            {
+                result[i] = Fibonacci(i);
+                
+                Console.Write($"{result[i]}, ");
+            }
+
+            Console.WriteLine();
         }
 
-        public long Fibonacci(int number)
+        private int Fibonacci(int number)
         {
+
             if (number == 0)
             {
                 return 0;
@@ -141,13 +163,40 @@ namespace RecursiveAlgorithms
             }
             else
             {
-                Console.Write(Fibonacci(number - 1) * Fibonacci(number - 2));
+                return Fibonacci(number - 1) + Fibonacci(number - 2);
+            }            
+        }
 
-                return Fibonacci(number - 1) * Fibonacci(number - 2);
-                Fibonacci(number - 1);
+        public void Factorial(int number)
+        {
+            Console.Write($"Factorial de {number}: ");
+
+            int[] result = new int[number + 1];
+
+            for(int i = 0; i <= number; i++)
+            {
+                result[i] = FactorialOfNumber(i);
+                if (i != number)
+                {
+                    Console.Write($"{FactorialOfNumber(i)}, ");
+                }
+                else
+                {
+                    Console.Write($"{FactorialOfNumber(i)}");
+                }
             }
+        }
 
-            
+        private int FactorialOfNumber(int number)
+        {
+            if (number <= 1)
+            {
+                return 1;
+            }
+            else
+            {
+                return number * FactorialOfNumber(number - 1);
+            }
         }
 
     }

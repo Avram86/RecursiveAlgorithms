@@ -22,16 +22,21 @@ namespace RecursiveAlgorithms
             if(int.TryParse(Console.ReadLine(), out int number))
             {
                int position= arr.IndexOfAnElemetInTheArray(number);
+
+                Console.WriteLine();
                 Console.WriteLine($"The position of the element {number} is: {position}");
+                Console.WriteLine();
 
-                Console.WriteLine(arr.FibonacciSequence(number).ToString());
+                arr.FibonacciSequence(number);
+                Console.WriteLine();
+
+                arr.Factorial(number);
+                Console.WriteLine();
             }
-           
-            
+            else
+            {
+                Console.WriteLine("You did not insert a number!");
+            }            
         }
-            
     }
-
-    
-    
 }
